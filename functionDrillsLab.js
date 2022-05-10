@@ -252,6 +252,7 @@ const bigOrSmall = (arr) => {
 let arrayEvaluator = bigOrSmall(bigOrSmallArray);
 
 console.log(bigOrSmall(bigOrSmallArray));
+
 ////////////////// PROBLEM 16 ////////////////////
 let contestants = [
   "Katniss",
@@ -271,6 +272,14 @@ let loser = "Glimmer";
 */
 
 //CODE HERE
+const theEliminator = (players, loser) => {
+  for (let i = 0; i < players.length; i++) {
+    if (players[i] === loser) {
+      players.splice(i, 1);
+    }
+  }
+  return players;
+};
 
 ////////////////// PROBLEM 17 ////////////////////
 let sampleString = "Hi, my name is Kylo.";
@@ -280,7 +289,11 @@ let sampleString = "Hi, my name is Kylo.";
 */
 
 //CODE HERE
-
+const allUpper = (string) => {
+  string = string.toUpperCase();
+  console.log(string);
+};
+allUpper(sampleString);
 ////////////////// PROBLEM 18 ////////////////////
 /*
   Write a function called emailCheck that takes in
@@ -292,6 +305,16 @@ let sampleString = "Hi, my name is Kylo.";
   return 'must provide a valid email address'
 */
 
+//CODE HERE
+const emailCheck = (email) => {
+  email = String(email);
+  email = email.trim();
+  if (email.includes("@")) {
+    return "email verified";
+  } else {
+    return "must provide a valid email address";
+  }
+};
 ////////////////// PROBLEM 19 ////////////////////
 /*
   Write a function, naming it whatever you believe to be appropriate, that buys as many chocolate frogs as possible with a certain amount of gold. Each chocolate frog costs 3 gold. Your function should take in a single parameter, which is the amount of gold you are willing to spend. Your function should return a total amount of chocolate frogs you were able to purchase.
@@ -299,14 +322,28 @@ let sampleString = "Hi, my name is Kylo.";
 */
 
 //CODE HERE
+const buyFrogs = (gold) => {
+  let frogPrice = 3;
+  let frogsAbleToBeBought = gold / frogPrice;
+  return frogsAbleToBeBought;
+};
 
+let totalFrogs = buyFrogs(10);
+
+console.log(totalFrogs);
 ////////////////// PROBLEM 20 ////////////////////
 /*
   You might have noticed a slight bug in the previous problem. If you were to pass in 4 gold, the function would return to you 1.3333... However, you can't really go to a store and by 1.333 products. You would just be able to purchase 1 product. Re-write the function you used in the previous problem (give it the same name, just add a 2 to the end of it) that fixes this bug. Invoke the function and store the returned value to a variable called `totalFrogs2`.
 */
 
 //CODE HERE
+const buyFrogs2 = (gold) => {
+  let frogPrice = 3;
+  let frogsAbleToBeBought = Math.floor(gold / frogPrice);
+  return frogsAbleToBeBought;
+};
 
+let totalFrogs2 = buyFrogs2(10);
 ////////////////// PROBLEM 21 ////////////////////
 let sampleArray = [0, 1, 2, 3, 4, 7, 5, 6, 8, 9];
 /*
@@ -314,6 +351,18 @@ let sampleArray = [0, 1, 2, 3, 4, 7, 5, 6, 8, 9];
 */
 
 //CODE HERE
+
+const isItAscending = (numbers) => {
+  let j = 1;
+  for (let i = 0; i < numbers.length - 1; i++) {
+    if (numbers[i] < numbers[j]) {
+      j++;
+    } else return "false";
+  }
+  return "true";
+};
+
+let arrayIsAscending = isItAscending(sampleArray);
 
 ////////////////// PROBLEM 22 ////////////////////
 
@@ -337,13 +386,13 @@ function pond() {
 */
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = [];
+let globalScope = ["cute"];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = [];
+let bathroomScope = ["squeaky", "cute"];
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = [];
+let bathtubScope = ["nautical", "squeaky", "cute"];
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = [];
+let pondScope = ["fluffy", "cute"];
